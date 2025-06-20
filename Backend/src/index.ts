@@ -1,16 +1,19 @@
-import { connect } from "mongoose";
+import express from "express";
+import { connectMongodb } from "./config/mongo";
+import cors from "cors";
+import { bookRouter } from "./routes/BookRouter";
 
 process.loadEnvFile();
 
-const URI_DB = process.env.URI_DB || "";
+const PORT = process.env.PORT;
 
-const connectMongodb = async () => {
-  try {
-    await connect(URI_DB);
-    console.log("✅ Conectado con éxito a mongodb");
-  } catch (error) {
-    console.log("🚫 No se pudo conectar a mongodb");
-  }
-};
+const app = express();
+app.use(express.json());
+app.use(cors());
 
-export { connectMongodb };
+app.use("/api/books", bookRouter);
+
+app.listen(PORT, () => {
+  console.log(`✅ Servidor en escucha en el puerto http://localhost:${PORT}`);
+  connectMongodb();
+});
