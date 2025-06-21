@@ -1,7 +1,7 @@
 import express from "express";
 import { connectMongodb } from "./config/mongo";
 import cors from "cors";
-import { bookRouter } from "./routes/BookRouter";
+import { bookRouter } from "./routes/bookRouter";
 
 process.loadEnvFile();
 
