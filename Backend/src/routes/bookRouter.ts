@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Book } from "../models/BookModel";
 import {
-  //createBook,
+  createBook,
   //deleteBook,
   getAllBooks,
   //getBookID,
@@ -21,7 +21,7 @@ bookRouter.get("/", getAllBooks);
 // Método HTTP
 // puede ser GET - POST (es para agregar) - PATCH - DELETE
 
-// bookRouter.post("/", createBook);
+bookRouter.post("/", createBook);
 
 // DELETE - http://localhost:1235/api/books
 
